@@ -1,0 +1,55 @@
+{
+  "name": "wrap-with-tag",
+  "version": "1.0.0",
+  "author": "Kazuhiro Kobayashi <info@kzhrk.com> (https://blog.kzhrk.com)",
+  "bugs": {
+    "url": "https://github.com/kzhrk/wrap-with-tag/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "babel-loader": "^8.0.4",
+    "eslint": "^5.7.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-jest": "^21.26.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "jest": "^23.6.0",
+    "prettier": "^1.14.3",
+    "uglifyjs-webpack-plugin": "^2.0.1",
+    "webpack": "^4.22.0",
+    "webpack-cli": "^3.1.2"
+  },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
+  "homepage": "https://github.com/kzhrk/wrap-with-tag#readme",
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+    },
+    "moduleFileExtensions": [
+      "js"
+    ]
+  },
+  "jsnext:main": "./src/index.js",
+  "keywords": [],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kzhrk/wrap-with-tag.git"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production npm run webpack:pro & npm run fixpack",
+    "fixpack": "npx fixpack",
+    "lint": "eslint --fix --ext .js ./src ./__tests__",
+    "start": "NODE_ENV=development npm run webpack:dev",
+    "test": "jest",
+    "webpack:dev": "webpack -w",
+    "webpack:pro": "webpack --display-used-exports"
+  }
+}
