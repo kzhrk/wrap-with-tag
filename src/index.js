@@ -12,7 +12,7 @@ const getParents = dom => {
   return result;
 };
 
-export default function({
+function wrapWithTag({
   regexp = /([a-zA-Z0-9,¥.-]+)/g,
   className = 'diff',
   tagName = 'span'
@@ -84,3 +84,5 @@ export default function({
     renew
   };
 }
+
+module.exports = wrapWithTag;
