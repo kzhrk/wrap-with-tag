@@ -8,13 +8,13 @@ Wrap-with-tag provides a simple function to wrap string with html.
 
 ## Description
 
-Wrap-with-tag provides function wrapping specific word with html tag assigned with certain class.  
+Wrap-with-tag provides a function wrapping specific word with html tag assigned with certain class.  
 The use case is to wrap specific word, like a company name, with a span element assigned with class for applying font-family.
 
 ## Install
 
 ```
-$ yarn add wrap-with-tag -d
+$ yarn add wrap-with-tag
 ```
 
 or
@@ -40,7 +40,7 @@ wrapWithTag({
 Alternatively, you can use `script` tag with html file.
 
 ```html
-<script src="node_modules/wrap-with-tag/dist/ariaset.js">
+<script src="node_modules/wrap-with-tag/dist/index.js">
 <script>
 wrapWithTag({
   regexp: /Company Name/g,
