@@ -36,7 +36,7 @@ html(lang="en")
                 regexp: /(company)/gi,
                 className: 'font',
                 tagName: 'em'
-              })
+              });
       section.row
         header.col.s12
           h5 This HTML is after excuting the Function <code>wrapWithTag</code>.
@@ -46,6 +46,31 @@ html(lang="en")
             code.html.
               &lt;p>&lt;em class="font">Company&lt;/em> - FizzBuzz&lt/p>
               &lt;p>!!&lt;em class="font">company&lt;/em>!!&lt/p>
+      hr
+      section.row
+        header
+          h4.col.s12 If you want to define any property, you can use attr option.
+          h5.col.s12 Execute the function after loading the DOM.
+        .col.s12
+          pre
+            code.js.
+              wrapWithTag({
+                regexp: /(company)/gi,
+                className: 'font',
+                tagName: 'em',
+                attr: {
+                  tabindex: -1
+                }
+              });
+      section.row
+        header.col.s12
+          h5 This HTML is after excuting the Function <code>wrapWithTag</code>.
+          p Strings that match the regular expression are wrapped with html <code>&lt;em class="font">&lt;/em></code>
+        .col.s12
+          pre
+            code.html.
+              &lt;p>&lt;em class="font" tabindex="-1">Company&lt;/em> - FizzBuzz&lt/p>
+              &lt;p>!!&lt;em class="font" tabindex="-1">company&lt;/em>!!&lt/p>
     footer.page-footer.white
       .footer-copyright.grey.lighten-2
         .container.black-text &copy; 2018 Copyright kzhrk
@@ -54,3 +79,9 @@ html(lang="en")
       img(style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub")
     script.
       hljs.initHighlightingOnLoad();
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-29985375-8')
+    script.
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-29985375-8');

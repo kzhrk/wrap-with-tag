@@ -35,26 +35,42 @@ import wrapWithTag from 'wrap-with-tag';
 wrapWithTag({
   regexp: /(Company Name)/g,
   className: 'special-font',
-  tagName: 'span'
+  tagName: 'span',
+  attr: {
+    tabindex: -1
+  }
 });
 ```
 
-Alternatively, you can use `script` tag with html file.
+Alternatively, you can use `script` tag with html file.  
+You can find all versions of the CDN at [UNPKG](https://unpkg.com/wrap-with-tag/).
 
 ```html
-<script src="node_modules/wrap-with-tag/dist/index.js">
+<script src="https://unpkg.com/wrap-with-tag">
 <script>
 wrapWithTag({
-  regexp: /Company Name/g,
+  regexp: /(Company Name)/g,
   className: 'special-font',
-  tagName: 'span'
+  tagName: 'span',
+  attr: {
+    tabindex: -1
+  }
 });
 </script>
 ```
 
+### Options
+
+| name | default | description |
+|:-----|:------- |:------------|
+| regexp | /([a-zA-Z0-9,¥.-]+)/g | The regular expression of string wrapped with html tag defined with tagName option. |
+| className | diff | The string is added to html tag defined with tagName option. |
+| tagName | span | The html tag wraps string. |
+| attr | {} | The object is applied to html tag defined with tagName option. |
+
 ## Licence
 
-MIT
+[MIT](https://github.com/kzhrk/wrap-with-tag/blob/master/LICENSE)
 
 ## Author
 

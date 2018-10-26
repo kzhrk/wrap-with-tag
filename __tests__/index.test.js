@@ -1,6 +1,6 @@
-import SimpleTagWrapper from '../src/index';
+import WrapWithTag from '../src/index';
 
-describe('simple-tag-wrapper', () => {
+describe('wrap-with-tag', () => {
   test('Wrap half-width alphanumeric characters with span.diff, ignoring multibyte characters.', () => {
     const paragraphNode = document.createElement('p');
 
@@ -8,7 +8,7 @@ describe('simple-tag-wrapper', () => {
 
     document.body.append(paragraphNode);
 
-    SimpleTagWrapper();
+    WrapWithTag();
 
     expect(paragraphNode.innerHTML).toEqual(
       '<span class="diff">1234</span>あいうえお<span class="diff">abcd</span>'
@@ -22,11 +22,11 @@ describe('simple-tag-wrapper', () => {
 
     document.body.append(paragraphNode);
 
-    const simpleTagWrapper = SimpleTagWrapper();
+    const wrapWithTag = WrapWithTag();
 
     paragraphNode.insertAdjacentHTML('beforeend', 'abcd');
 
-    simpleTagWrapper.renew();
+    wrapWithTag.renew();
 
     expect(paragraphNode.innerHTML).toEqual(
       '<span class="diff">1234</span>あいうえお<span class="diff">abcd</span>'
@@ -40,9 +40,9 @@ describe('simple-tag-wrapper', () => {
 
     document.body.append(paragraphNode);
 
-    const simpleTagWrapper = SimpleTagWrapper();
+    const wrapWithTag = WrapWithTag();
 
-    simpleTagWrapper.renew();
+    wrapWithTag.renew();
 
     expect(paragraphNode.innerHTML).toEqual(
       '<span class="diff">1234</span>あいうえお<span class="diff">abcd</span>'
@@ -65,12 +65,50 @@ describe('simple-tag-wrapper', () => {
 
     document.body.append(svgNode);
 
-    const simpleTagWrapper = SimpleTagWrapper();
+    const wrapWithTag = WrapWithTag();
 
-    simpleTagWrapper.renew();
+    wrapWithTag.renew();
 
     document.body.append(prevSvgNode);
 
     expect(svgNode).toEqual(prevSvgNode);
+  });
+
+  test('Wrap the half-width alphanumeric with <span data-index="1">.', () => {
+    const paragraphNode = document.createElement('p');
+
+    paragraphNode.textContent = '1234あいうえおabcd';
+
+    document.body.append(paragraphNode);
+
+    WrapWithTag({
+      attr: {
+        'data-index': 1
+      }
+    });
+
+    expect(paragraphNode.innerHTML).toEqual(
+      '<span data-index="1">1234</span>あいうえお<span data-index="1">abcd</span>'
+    );
+  });
+
+  test('Don\'t wrap the half-width alphanumeric, that have wraped <span data-index="1">, with <span data-index="1">.', () => {
+    const paragraphNode = document.createElement('p');
+
+    paragraphNode.textContent = '1234あいうえおabcd';
+
+    document.body.append(paragraphNode);
+
+    const wrapWithTag = WrapWithTag({
+      attr: {
+        'data-index': 1
+      }
+    });
+
+    wrapWithTag.renew();
+
+    expect(paragraphNode.innerHTML).toEqual(
+      '<span data-index="1">1234</span>あいうえお<span data-index="1">abcd</span>'
+    );
   });
 });
