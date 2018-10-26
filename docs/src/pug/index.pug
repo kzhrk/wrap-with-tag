@@ -1,0 +1,56 @@
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title wrap with tag | Docs
+    link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
+    link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/styles/monokai.min.css")
+    link(rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Serif")
+    script(src="./js/script.js")
+    script(src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.13.1/highlight.min.js")
+    style.
+      body {font-family: 'Noto Serif', serif;}
+  body
+    main.container.white
+      header.row
+        .col.s12.center
+          h1.orange-text.darken-4 wrap-with-tag
+      .row
+        .col.s12
+          p.flow-text.center A wrap-with-tag provides a simple function to wrap string with html.      
+      section.row
+        header.col.s12
+          h5 This HTML is before excuting the Function <code>wrapWithTag</code>.
+        .col.s12
+          pre
+            code.html.
+              &lt;p>Company - FizzBuzz&lt/p>
+              &lt;p>!!company!!&lt/p>
+      section.row
+        header.col.s12
+          h5 Execute the function after loading the DOM.
+        .col.s12
+          pre
+            code.js.
+              wrapWithTag({
+                regexp: /(company)/gi,
+                className: 'font',
+                tagName: 'em'
+              })
+      section.row
+        header.col.s12
+          h5 This HTML is after excuting the Function <code>wrapWithTag</code>.
+          p Strings that match the regular expression are wrapped with html <code>&lt;em class="font">&lt;/em></code>
+        .col.s12
+          pre
+            code.html.
+              &lt;p>&lt;em class="font">Company&lt;/em> - FizzBuzz&lt/p>
+              &lt;p>!!&lt;em class="font">company&lt;/em>!!&lt/p>
+    footer.page-footer.white
+      .footer-copyright.grey.lighten-2
+        .container.black-text &copy; 2018 Copyright kzhrk
+
+    a(href="https://github.com/kzhrk/wrap-with-tag/")
+      img(style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub")
+    script.
+      hljs.initHighlightingOnLoad();

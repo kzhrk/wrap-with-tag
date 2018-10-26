@@ -67,7 +67,9 @@ function wrapWithTag({
         .cloneNode()
         .textContent.replace(
           options.regexp,
-          `<${options.tagName} class="${options.className}">$1</${options.tagName}>`
+          `<${options.tagName} class="${options.className}">$1</${
+            options.tagName
+          }>`
         );
 
       [...tmpDiv.childNodes].forEach(childNode => {

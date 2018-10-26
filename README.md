@@ -11,6 +11,8 @@ Wrap-with-tag provides a simple function to wrap string with html.
 Wrap-with-tag provides a function wrapping specific word with html tag assigned with certain class.  
 The use case is to wrap specific word, like a company name, with a span element assigned with class for applying font-family.
 
+[Docs](https://kzhrk.github.com/wrap-with-tag/)
+
 ## Install
 
 ```
@@ -31,7 +33,7 @@ The recommend use case is using `import` statements.
 import wrapWithTag from 'wrap-with-tag';
 
 wrapWithTag({
-  regexp: /Company Name/g,
+  regexp: /(Company Name)/g,
   className: 'special-font',
   tagName: 'span'
 });

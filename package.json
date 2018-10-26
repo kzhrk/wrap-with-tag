@@ -1,5 +1,6 @@
 {
   "name": "wrap-with-tag",
+  "description": "A wrap-with-tag provides a simple function to wrap string with html.",
   "version": "1.0.1",
   "author": "Kazuhiro Kobayashi <info@kzhrk.com> (https://blog.kzhrk.com)",
   "bugs": {
@@ -19,9 +20,11 @@
     "eslint-plugin-prettier": "^3.0.0",
     "jest": "^23.6.0",
     "prettier": "^1.14.3",
+    "pug-cli": "^1.0.0-alpha6",
     "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.22.0",
-    "webpack-cli": "^3.1.2"
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.10"
   },
   "files": [
     "dist",
@@ -37,7 +40,9 @@
     ]
   },
   "jsnext:main": "./src/index.js",
-  "keywords": [],
+  "keywords": [
+    "html"
+  ],
   "license": "MIT",
   "main": "./dist/index.js",
   "repository": {
@@ -45,13 +50,16 @@
     "url": "git+https://github.com/kzhrk/wrap-with-tag.git"
   },
   "scripts": {
-    "build": "NODE_ENV=production npm run webpack:pro",
-    "fixpack": "npx fixpack",
+    "build": "npm run webpack:pro",
+    "docs": "npm run webpack:docs; npm run pug:pro",
     "lint": "eslint --fix --ext .js ./src ./__tests__",
-    "start": "NODE_ENV=development npm run webpack:dev",
+    "prepublish": "npm run test; npm run build",
+    "pug:dev": "pug ./docs/src/pug -Pwo ./docs",
+    "pug:pro": "pug ./docs/src/pug -o ./docs",
+    "start": "npm run webpack:dev & npm run pug:dev",
     "test": "jest",
-    "webpack:dev": "webpack -w",
-    "webpack:pro": "webpack --display-used-exports"
-  },
-  "dependencies": {}
+    "webpack:dev": "NODE_ENV=development webpack-dev-server --config ./webpack.config.docs.js",
+    "webpack:docs": "NODE_ENV=production webpack --config ./webpack.config.docs.js  --display-used-exports",
+    "webpack:pro": "NODE_ENV=production webpack --display-used-exports"
+  }
 }
