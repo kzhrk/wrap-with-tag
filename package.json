@@ -1,7 +1,7 @@
 {
   "name": "wrap-with-tag",
   "description": "A wrap-with-tag provides a simple function to wrap string with html.",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Kazuhiro Kobayashi <info@kzhrk.com> (https://blog.kzhrk.com)",
   "bugs": {
     "url": "https://github.com/kzhrk/wrap-with-tag/issues"
