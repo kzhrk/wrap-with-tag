@@ -7,12 +7,9 @@
     "url": "https://github.com/kzhrk/wrap-with-tag/issues"
   },
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-syntax-object-rest-spread": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "babel-loader": "^8.0.4",
+    "@types/jest": "^24.0.15",
+    "@typescript-eslint/eslint-plugin": "^1.10.2",
+    "@typescript-eslint/parser": "^1.10.2",
     "coveralls": "^3.0.2",
     "eslint": "^5.7.0",
     "eslint-config-prettier": "^3.1.0",
@@ -21,10 +18,11 @@
     "jest": "^23.6.0",
     "prettier": "^1.14.3",
     "pug-cli": "^1.0.0-alpha6",
-    "uglifyjs-webpack-plugin": "^2.0.1",
-    "webpack": "^4.22.0",
-    "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "rollup": "^1.16.2",
+    "rollup-plugin-terser": "^5.1.1",
+    "rollup-plugin-typescript": "^1.0.1",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.2"
   },
   "files": [
     "dist",
@@ -32,14 +30,21 @@
   ],
   "homepage": "https://github.com/kzhrk/wrap-with-tag#readme",
   "jest": {
+    "moduleDirectories": [
+      "node_modules",
+      "src"
+    ],
     "transform": {
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest"
+      "^.+\\.ts$": "ts-jest"
     },
     "moduleFileExtensions": [
-      "js"
+      "js",
+      "ts"
+    ],
+    "testMatch": [
+      "**/__tests__/**/*.test.ts"
     ]
   },
-  "jsnext:main": "./src/index.js",
   "keywords": [
     "html"
   ],
@@ -50,16 +55,16 @@
     "url": "git+https://github.com/kzhrk/wrap-with-tag.git"
   },
   "scripts": {
-    "build": "npm run webpack:pro",
-    "docs": "npm run webpack:docs; npm run pug:pro",
-    "lint": "eslint --fix --ext .js ./src ./__tests__",
+    "build": "tsc -p ./; npm run rollup",
+    "docs": "tsc -p ./; npm run rollup; npm run pug:pro",
+    "lint": "eslint --fix --ext .ts,.js ./rollup.config.js ./src ./__tests__",
     "prepublish": "npm run test; npm run build",
     "pug:dev": "pug ./docs/src/pug -Pwo ./docs",
     "pug:pro": "pug ./docs/src/pug -o ./docs",
-    "start": "npm run webpack:dev & npm run pug:dev",
-    "test": "jest",
-    "webpack:dev": "NODE_ENV=development webpack-dev-server --config ./webpack.config.docs.js",
-    "webpack:docs": "NODE_ENV=production webpack --config ./webpack.config.docs.js  --display-used-exports",
-    "webpack:pro": "NODE_ENV=production webpack --display-used-exports"
-  }
+    "rollup": "rollup --config ./rollup.config.js",
+    "start": "npm run rollup & npm run pug:dev",
+    "test": "jest"
+  },
+  "types": "./dist/index.d.ts",
+  "umd:main": "./dist/index.umd.js"
 }

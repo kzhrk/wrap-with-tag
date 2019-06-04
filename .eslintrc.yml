@@ -9,6 +9,7 @@ extends:
 - plugin:prettier/recommended
 parserOptions:
   sourceType: module
+  project: ./tsconfig.json
 rules:
   no-console: 0
   no-alert: 0
@@ -19,3 +20,5 @@ rules:
     bracketSpacing: true
 plugins:
 - jest
+- "@typescript-eslint"
+parser: "@typescript-eslint/parser"

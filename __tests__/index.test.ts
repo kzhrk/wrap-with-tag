@@ -60,7 +60,7 @@ describe('wrap-with-tag', () => {
 
     tmpDiv.innerHTML = svgString;
 
-    const svgNode = tmpDiv.firstChild;
+    const svgNode = <HTMLElement>tmpDiv.firstChild;
     const prevSvgNode = svgNode.cloneNode(true);
 
     document.body.append(svgNode);
@@ -83,7 +83,7 @@ describe('wrap-with-tag', () => {
 
     WrapWithTag({
       attr: {
-        'data-index': 1
+        'data-index': '1'
       }
     });
 
@@ -101,7 +101,7 @@ describe('wrap-with-tag', () => {
 
     const wrapWithTag = WrapWithTag({
       attr: {
-        'data-index': 1
+        'data-index': '1'
       }
     });
 
