@@ -43,10 +43,10 @@ wrapWithTag({
 ```
 
 Alternatively, you can use `script` tag with html file.  
-You can find all versions of the CDN at [UNPKG](https://unpkg.com/wrap-with-tag/).
+You can find all versions of the CDN at [UNPKG](https://unpkg.com/wrap-with-tag/dist/index.umd.js).
 
 ```html
-<script src="https://unpkg.com/wrap-with-tag">
+<script src="https://unpkg.com/wrap-with-tag/dist/index.umd.js">
 <script>
 wrapWithTag({
   regexp: /(Company Name)/g,
