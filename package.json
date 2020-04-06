@@ -7,7 +7,7 @@
     "url": "https://github.com/kzhrk/wrap-with-tag/issues"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.15",
+    "@types/jest": "^25.2.1",
     "@typescript-eslint/eslint-plugin": "^1.13.0",
     "@typescript-eslint/parser": "^1.13.0",
     "coveralls": "^3.0.5",
