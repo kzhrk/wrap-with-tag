@@ -16,7 +16,7 @@
     "eslint-plugin-jest": "^23.0.5",
     "eslint-plugin-prettier": "^3.1.0",
     "jest": "^24.8.0",
-    "prettier": "^1.18.2",
+    "prettier": "^2.3.2",
     "pug-cli": "^1.0.0-alpha6",
     "rollup": "^1.17.0",
     "rollup-plugin-terser": "^5.1.1",
